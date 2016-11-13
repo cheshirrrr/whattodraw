@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>What to Draw</title>
+</head>
+
+<body>
+<script src="../jquery-3.1.1.slim.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../main.css" media="screen"/>
+
+<div class="results" id="results"></div>
+
+<div class="wrapper">
+    <button id="character" name="character" onclick="get('character')" type="button" class="button noselect">Give
+        me character
+    </button>
+</div>
+
+<script>
+    function get(target){
+        $('#results').load(target);
+    }
+
+
+
+</script>
+</body>
+
+
+</html>

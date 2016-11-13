@@ -1,0 +1,48 @@
+.button {
+        display: inline-block;
+        text-align: center;
+        font-weight: 600;
+        background-color: #0AE;
+        cursor: pointer;
+        color: #FFF;
+        border-radius: 10vh;
+        height: 10vh;
+        line-height: 10vh;
+        width: 50vh;
+        font-size: 3vh;
+}
+
+.noselect {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.wrapper {
+	/*position: fixed;*/
+	top: 30vh;
+	text-align: center;
+	width: 100%;
+}
+
+.results {
+    cursor: default;
+    width: 100%;
+    height: 50vh;
+    text-align: center;
+    color: #222;
+    font-size: 5vh;
+    font-weight: 400;
+    position: relative;
+}
+
+.results span {
+    margin: 0 auto;
+    padding: 0 5%;
+    height: 100%;
+    vertical-align: middle;
+    text-align: center;
+}
