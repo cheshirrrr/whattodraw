@@ -5,27 +5,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import whattodraw.model.Character;
-import whattodraw.picker.CharacterPicker;
+import whattodraw.characters.Character;
+import whattodraw.characters.CharacterRepository;
 
 @Controller
 @RequestMapping("/whattodraw")
-public class PickController {
-
+public class WhatToDrawController {
     @Autowired
-    CharacterPicker characterPicker;
+    CharacterRepository characters;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String page(Model model) {
+    public String getStatic(Model model) {
         return "whattodraw";
     }
 
     @RequestMapping(value = "/character", method = RequestMethod.GET)
-    public String character(Model model) {
-        Character character = characterPicker.getRandom();
+    String getCharacter(Model model) {
+        Character character = characters.getRandom();
         model.addAttribute("char", character);
 
         return "results::character";
     }
-
 }

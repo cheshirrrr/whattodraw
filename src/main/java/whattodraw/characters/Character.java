@@ -1,8 +1,5 @@
-package whattodraw.model;
+package whattodraw.characters;
 
-/**
- * Created by cheshirrrr on 13.11.2016.
- */
 public class Character {
     private String trait;
     private String setting;
