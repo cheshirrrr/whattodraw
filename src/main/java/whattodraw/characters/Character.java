@@ -1,9 +1,11 @@
 package whattodraw.characters;
 
-public class Character {
+public class Character{
     private String trait;
     private String setting;
     private String name;
+
+    public Character(){}
 
     public Character(String trait, String setting, String name) {
         this.trait = trait;

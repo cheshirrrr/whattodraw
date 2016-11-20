@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>What to Draw</title>
+</head>
+
+<body>
+<script src="../../jquery-3.1.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../../main.css" media="screen"/>
+</body>
+
+<div th:fragment="suggestions" id="suggestions" class="suggestions">
+    <ul th:each="name : ${names}" id="results_names" class="result_list">
+        <li>
+            <span th:text="${name}"></span>
+            <button id="approve" name="approve"
+                    th:onclick="'javascript:approveSuggestion(\'names\',\'' + ${name} + '\');'"
+                    type="button" class="round_btn">&#10004;</button>
+            <button id="remove" name="remove"
+                    th:onclick="'javascript:removeSuggestion(\'names\',\'' + ${name} + '\');'"
+                    type="button" class="round_btn">X</button>
+        </li>
+    </ul>
+    <ul th:each="trait : ${traits}" id="results_traits" class="result_list">
+        <li>
+            <span th:text="${trait}"></span>
+            <button id="approve2" name="approve"
+                    th:onclick="'javascript:approveSuggestion(\'traits\',\'' + ${trait} + '\');'"
+                    type="button" class="round_btn">&#10004;</button>
+            <button id="remove2" name="remove"
+                    th:onclick="'javascript:removeSuggestion(\'traits\',\'' + ${trait} + '\');'"
+                    type="button" class="round_btn">X</button>
+        </li>
+    </ul>
+    <ul th:each="setting : ${settings}" id="results_settings" class="result_list">
+        <li>
+            <span th:text="${setting}"></span>
+            <button id="approve3" name="approve"
+                    th:onclick="'javascript:approveSuggestion(\'settings\',\'' + ${setting} + '\');'"
+                    type="button" class="round_btn">&#10004;</button>
+            <button id="remove3" name="remove"
+                    th:onclick="'javascript:removeSuggestion(\'settings\',\'' + ${setting} + '\');'"
+                    type="button" class="round_btn">X</button>
+        </li>
+    </ul>
+</div>
+
+</html>

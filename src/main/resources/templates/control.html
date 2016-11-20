@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>What to Draw</title>
+</head>
+
+<body>
+<script src="../jquery-3.1.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../main.css" media="screen"/>
+
+<p>
+    <b>Name:</b><input type="text" id="name_input" size="40"/><br/>
+    <b>Trait:</b><input type="text" id="trait_input" size="40"/><br/>
+    <b>Setting:</b><input type="text" id="setting_input" size="40"/><br/>
+    <button id="add_suggestion" name="add_suggestion" onclick="suggestCharacter()" type="button"
+            class="button noselect">Add character suggestions
+    </button>
+</p>
+
+<div class="wrapper">
+    <button id="show_suggestions" name="show_suggestions" onclick="get('characters')" type="button"
+            class="button noselect">Show character variants
+    </button>
+</div>
+
+<div class="results" id="results"></div>
+
+
+<div th:fragment="variants" id="variants" class="variants">
+    <div class="result_list">
+        <ul th:each="name : ${names}" id="results_names">
+            <li>
+                <button id="remove" name="remove"
+                        th:onclick="'javascript:removeVariant(\'names\',\'' + ${name} + '\');'"
+                        type="button" class="round_btn">X
+                </button>
+                <span th:text="${name}"></span>
+            </li>
+        </ul>
+    </div>
+    <div class="result_list">
+        <ul th:each="trait : ${traits}" id="results_traits">
+            <li>
+                <button id="remove2" name="remove"
+                        th:onclick="'javascript:removeSuggestion(\'traits\',\'' + ${trait} + '\');'"
+                        type="button" class="round_btn">X
+                </button>
+                <span th:text="${trait}"></span>
+            </li>
+        </ul>
+    </div>
+    <div class="result_list">
+        <ul th:each="setting : ${settings}" id="results_settings">
+            <li>
+                <button id="remove3" name="remove"
+                        th:onclick="'javascript:removeSuggestion(\'settings\',\'' + ${setting} + '\');'"
+                        type="button" class="round_btn">X
+                </button>
+                <span th:text="${setting}"></span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function get(target){
+        $('#results').load(target);
+    }
+
+
+    function suggestCharacter(){
+        $.ajax({
+        url: 'suggestions/characters',
+        data : JSON.stringify({ name: $('#name_input').val(), trait: $('#trait_input').val(), setting: $('#setting_input').val() }),
+        contentType : 'application/json',
+        type : 'PUT'
+        })
+        get('suggestions/characters')
+    }
+
+    function approveSuggestion(key,value){
+        $.ajax({
+        url: "suggestions/characters",
+        data : { action: 'APPROVE', key: key, value: value },
+        type : 'POST'
+        })
+        get('suggestions/characters')
+    }
+
+
+    function removeSuggestion(key,value){
+        $.ajax({
+        url: "suggestions/characters",
+        data : { action: 'REMOVE', key: key, value: value },
+        type : 'POST'
+        })
+        get('suggestions/characters')
+    }
+
+     function removeVariant(key,value){
+        $.ajax({
+        url: "characters",
+        data : { key: key, value: value },
+        type : 'POST'
+        })
+        get('characters')
+    }
+
+
+
+
+</script>
+
+</body>
+</html>
