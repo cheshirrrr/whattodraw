@@ -26,9 +26,12 @@ public class Application {
 
     @Bean
     JedisConnectionFactory jedisConnectionFactory() {
+        String url = env.getProperty("REDIS_URL");
+        String host = url.split(":")[0];
+        String port = url.split(":")[1];
         JedisConnectionFactory jedisConFactory = new JedisConnectionFactory();
-        jedisConFactory.setHostName(env.getProperty("jedis.factory.host"));
-        jedisConFactory.setPort(Integer.valueOf(env.getProperty("jedis.factory.port")));
+        jedisConFactory.setHostName(host);
+        jedisConFactory.setPort(Integer.parseInt(port));
         return jedisConFactory;
     }
 
