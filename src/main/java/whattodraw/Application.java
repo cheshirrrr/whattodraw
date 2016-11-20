@@ -10,7 +10,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import redis.clients.jedis.JedisShardInfo;
 import whattodraw.suggestions.Suggestion;
 
 @SpringBootApplication
@@ -26,13 +26,7 @@ public class Application {
 
     @Bean
     JedisConnectionFactory jedisConnectionFactory() {
-        String url = env.getProperty("REDIS_URL");
-        String host = url.split(":")[0];
-        String port = url.split(":")[1];
-        JedisConnectionFactory jedisConFactory = new JedisConnectionFactory();
-        jedisConFactory.setHostName(host);
-        jedisConFactory.setPort(Integer.parseInt(port));
-        return jedisConFactory;
+        return new JedisConnectionFactory(new JedisShardInfo(env.getProperty("REDIS_URL")));
     }
 
     @Bean
