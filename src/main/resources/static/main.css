@@ -1,15 +1,17 @@
 .button {
-        display: inline-block;
-        text-align: center;
-        font-weight: 600;
-        background-color: #0AE;
-        cursor: pointer;
-        color: #FFF;
-        border-radius: 10vh;
-        height: 10vh;
-        line-height: 10vh;
-        width: 50vh;
-        font-size: 3vh;
+    width: 200px;
+    height: 200px;
+    line-height: 50px;
+    border: 2px solid #7297b1;
+    border-radius: 50%;
+    color: #fdfdfd;
+    text-decoration: none;
+    background: #0069a7;
+    box-shadow: 0 0 3px #676262;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: 'Josefin Slab', serif;
+    padding: 30px 40px 40px 40px;
 }
 
 .noselect {
@@ -21,31 +23,21 @@
 	user-select: none;
 }
 
-.wrapper {
-	/*position: fixed;*/
-	top: 30vh;
-	text-align: center;
-	width: 100%;
+.results-wrapper {
+    text-align: center;
 }
 
 .results {
-    cursor: default;
-    width: 100%;
-    height: 50vh;
-    text-align: center;
-    color: #222;
-    font-size: 5vh;
-    font-weight: 400;
-    position: relative;
-}
+   height: 200px;
+   line-height: 250px;
+ }
 
 .results span {
-    margin: 0 auto;
-    padding: 0 5%;
-    height: 100%;
-    vertical-align: middle;
-    text-align: center;
-}
+   line-height: 200%;
+   font-size: 400%;
+   font-family: 'Josefin Slab', serif;
+   font-weight: bold;
+ }
 
 .result_list {
     float: left;

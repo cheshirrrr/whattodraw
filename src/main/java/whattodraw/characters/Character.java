@@ -24,4 +24,9 @@ public class Character{
     public String getName() {
         return name;
     }
+
+    @Override
+    public String toString() {
+        return String.join(" ",trait,setting,name);
+    }
 }
